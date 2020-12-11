@@ -1,3 +1,6 @@
+from collections import Counter
+_count = Counter()
+
 fullinput = """c
 jc
 ck
@@ -2075,16 +2078,32 @@ def part_one():
     print(total_length)
 
 def part_two():
-    test_array = testinput.split("\n\n")
-    total_length = 0
+    test_array = fullinput.split("\n\n")
+    total_questions = 0
+    questions = 0
     for x in range(len(test_array)):
+        _count = Counter()
         list_input = list(test_array[x])#.replace("\n", ""))
-        print(list_input)
-        list_input = set(list(list_input))
-        print(list_input)
-        total_length = total_length + len(list_input)
-    print(total_length)
-    
+        #print(list_input)
+        unique_input = sorted(list(set(list(list_input))))
+        _count.update(list_input)
+        _count.update("\n")
+        newlines = _count["\n"]
+        if unique_input[0] == "\n":
+            copy_unique = unique_input[1:]
+        else:
+            copy_unique = unique_input
+        #copy_unique.remove("\n")
+        #print("set", unique_input)
+        #print("removed", copy_unique)
+        for y in copy_unique:
+            #print('%s : %d' % (y, _count[y]))
+            if _count[y] == newlines:
+                questions = questions + 1
+            total_questions = total_questions + questions
+            #print("questions:", questions)
+    print("total:", questions)
+    # 3143
 
 def main():
     part_two()
