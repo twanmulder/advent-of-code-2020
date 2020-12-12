@@ -410,6 +410,7 @@ def part_two(some_input):
     r1_d2 = right1_down2(list_input)
     total = r1_d1 * r3_d1 * r5_d1 * r7_d1 * r1_d2
     print(r1_d1, r3_d1, r5_d1, r7_d1, r1_d2,total)
+    # 8336352024
 
 def main():
     #part_one(fullinput)
